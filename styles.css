@@ -1,0 +1,283 @@
+:root {
+    /* Light Mode Variables */
+    --bg-color: #ffffff;
+    --text-main: #111111;
+    --text-muted: #666666;
+    --border-color: #eaeaea;
+    --accent-color: #000000;
+    --tag-bg: #f4f4f5;
+    --tag-text: #333333;
+    --hover-bg: #f9f9f9;
+}
+
+body.dark-mode {
+    /* Dark Mode Variables */
+    --bg-color: #111111;
+    --text-main: #ededed;
+    --text-muted: #a1a1a1;
+    --border-color: #333333;
+    --accent-color: #ffffff;
+    --tag-bg: #222222;
+    --tag-text: #e0e0e0;
+    --hover-bg: #1a1a1a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+
+/* Typography */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-top: 3rem;
+}
+
+h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    border-bottom: 1px solid transparent;
+}
+
+a:hover {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+.location {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* Header Links */
+.links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.links a {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.cv-link {
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+/* Timeline/Experience */
+.timeline-item {
+    display: flex;
+    margin-bottom: 2.5rem;
+}
+
+.timeline-meta {
+    flex: 0 0 150px;
+    padding-right: 20px;
+}
+
+.date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.date-inline {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content {
+    flex: 1;
+}
+
+.institution {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.tags li {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Project Card */
+.project-card {
+    background-color: var(--hover-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.project-card h4 {
+    margin-bottom: 0;
+}
+
+.project-card ul {
+    margin-top: 0.5rem;
+    padding-left: 1.2rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.project-card li {
+    margin-bottom: 0.3rem;
+}
+
+/* Lists */
+.bullet-list {
+    list-style-type: disc;
+    padding-left: 1.2rem;
+    color: var(--text-muted);
+}
+
+.bullet-list li {
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+    margin-top: 5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+    z-index: 100;
+}
+
+#theme-toggle:hover {
+    background-color: var(--hover-bg);
+    color: var(--accent-color);
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .timeline-item {
+        flex-direction: column;
+    }
+    
+    .timeline-meta {
+        flex: none;
+        margin-bottom: 0.25rem;
+    }
+    
+    .container {
+        padding: 60px 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
