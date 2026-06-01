@@ -1,17 +1,20 @@
 :root {
-    /* Light Mode Variables */
-    --bg-color: #ffffff;
-    --text-main: #111111;
-    --text-muted: #666666;
-    --border-color: #eaeaea;
-    --accent-color: #000000;
-    --tag-bg: #f4f4f5;
-    --tag-text: #333333;
-    --hover-bg: #f9f9f9;
+    /* Light Mode (Illuminated Manuscript) Variables */
+    --bg-color: #fbf5e6; /* Parchment */
+    --text-main: #2b1b04; /* Dark ink */
+    --text-muted: #4a3314; /* Lighter ink */
+    --border-color: #b59434; /* Old gold */
+    --accent-color: #8b0000; /* Deep red / crimson */
+    --tag-bg: #f0e6d2;
+    --tag-text: #2b1b04;
+    --hover-bg: #f4ead5;
+    
+    --font-heading: 'Uncial Antiqua', serif;
+    --font-body: 'EB Garamond', serif;
 }
 
 body.dark-mode {
-    /* Dark Mode Variables */
+    /* Dark Mode (Minimalist Academic) Variables */
     --bg-color: #111111;
     --text-main: #ededed;
     --text-muted: #a1a1a1;
@@ -20,6 +23,9 @@ body.dark-mode {
     --tag-bg: #222222;
     --tag-text: #e0e0e0;
     --hover-bg: #1a1a1a;
+    
+    --font-heading: 'Inter', -apple-system, sans-serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
 }
 
 * {
@@ -29,28 +35,61 @@ body.dark-mode {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: var(--font-body);
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
-    font-size: 16px;
+    font-size: 18px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Light Mode Manuscript Styling */
+body:not(.dark-mode) {
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.05"/></svg>');
+}
+
+body:not(.dark-mode) .container {
+    border: 4px double var(--border-color);
+    background-color: rgba(255, 252, 240, 0.8);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    padding: 60px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* Drop Cap for Manuscript */
+body:not(.dark-mode) #about p:first-of-type::first-letter {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    float: left;
+    line-height: 0.8;
+    margin-right: 0.1em;
+    color: var(--accent-color);
+    text-shadow: 1px 1px 0 var(--border-color);
+}
+
 .container {
-    max-width: 720px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 100px 20px;
 }
 
 /* Typography */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+}
+
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    letter-spacing: -0.02em;
     margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+body.dark-mode h1 {
+    color: var(--text-main);
 }
 
 h2 {
@@ -61,7 +100,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
@@ -70,7 +109,7 @@ h3 {
 }
 
 h4 {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 0.2rem;
 }
@@ -86,21 +125,22 @@ strong {
 }
 
 a {
-    color: var(--text-muted);
+    color: var(--accent-color);
     text-decoration: none;
     transition: color 0.2s ease;
     border-bottom: 1px solid transparent;
 }
 
 a:hover {
-    color: var(--accent-color);
-    border-bottom-color: var(--accent-color);
+    color: var(--text-main);
+    border-bottom-color: var(--text-main);
 }
 
 .location {
     font-size: 0.9rem;
     color: var(--text-muted);
     margin-bottom: 1.5rem;
+    font-style: italic;
 }
 
 /* Header Links */
@@ -112,12 +152,11 @@ a:hover {
 }
 
 .links a {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 
 .cv-link {
-    color: var(--accent-color);
     border-bottom: 1px solid var(--accent-color);
 }
 
@@ -128,19 +167,19 @@ a:hover {
 }
 
 .timeline-meta {
-    flex: 0 0 150px;
+    flex: 0 0 160px;
     padding-right: 20px;
 }
 
 .date {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
     font-weight: 500;
 }
 
 .date-inline {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
     margin-bottom: 0.5rem;
 }
@@ -151,10 +190,11 @@ a:hover {
 
 .institution {
     display: block;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text-main);
     font-weight: 500;
     margin-bottom: 0.5rem;
+    font-style: italic;
 }
 
 .tags {
@@ -170,8 +210,13 @@ a:hover {
     color: var(--tag-text);
     padding: 0.2rem 0.6rem;
     border-radius: 4px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
+    border: 1px solid var(--border-color);
+}
+
+body.dark-mode .tags li {
+    border: none;
 }
 
 /* Project Card */
@@ -200,9 +245,13 @@ a:hover {
 
 /* Lists */
 .bullet-list {
-    list-style-type: disc;
+    list-style-type: square;
     padding-left: 1.2rem;
     color: var(--text-muted);
+}
+
+body.dark-mode .bullet-list {
+    list-style-type: disc;
 }
 
 .bullet-list li {
@@ -213,7 +262,7 @@ a:hover {
 footer {
     margin-top: 5rem;
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
     border-top: 1px solid var(--border-color);
     padding-top: 2rem;
@@ -224,22 +273,45 @@ footer {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
     cursor: pointer;
     padding: 10px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s, color 0.2s;
+    transition: all 0.2s;
     z-index: 100;
 }
 
 #theme-toggle:hover {
     background-color: var(--hover-bg);
-    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Dark Mode Donut Cursor */
+body.dark-mode, body.dark-mode a, body.dark-mode button {
+    cursor: none !important;
+}
+
+#donut-cursor {
+    position: fixed;
+    pointer-events: none;
+    font-family: monospace;
+    font-size: 5px;
+    line-height: 5px;
+    color: #ffffff;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    display: none;
+    white-space: pre;
+    font-weight: bold;
+}
+
+body.dark-mode #donut-cursor {
+    display: block;
 }
 
 /* Animations */
@@ -273,8 +345,11 @@ footer {
         margin-bottom: 0.25rem;
     }
     
-    .container {
-        padding: 60px 20px;
+    .container, body:not(.dark-mode) .container {
+        padding: 40px 20px;
+        margin: 0;
+        border: none;
+        box-shadow: none;
     }
 
     h1 {
