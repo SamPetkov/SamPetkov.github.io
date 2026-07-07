@@ -142,50 +142,24 @@ body:not(.dark-mode) .manuscript-vines {
 }
 
 body:not(.dark-mode) .container {
-    border: 1px solid rgba(84, 56, 24, 0.28);
+    border: clamp(18px, 3vw, 32px) solid transparent;
+    /* Public domain source: https://openclipart.org/detail/294510/decorative-border-illumination */
+    border-image-source: url("assets/decorative-border-illumination.svg");
+    border-image-slice: 76;
+    border-image-repeat: round;
     background:
-        linear-gradient(90deg, rgba(139, 15, 15, 0.1) 0 1px, transparent 1px 100%),
         linear-gradient(180deg, rgba(255, 248, 232, 0.94), rgba(250, 240, 216, 0.96)),
         var(--surface-color);
     box-shadow:
         0 26px 80px var(--shadow-color),
-        inset 0 0 0 5px rgba(199, 154, 44, 0.16),
-        inset 0 0 0 9px rgba(139, 15, 15, 0.08);
+        inset 0 0 0 1px rgba(84, 56, 24, 0.16),
+        inset 0 0 0 6px rgba(199, 154, 44, 0.12);
     padding: clamp(3rem, 7vw, 4.75rem);
     margin-top: 42px;
     margin-bottom: 42px;
-    max-width: 940px;
+    max-width: 980px;
     position: relative;
     z-index: 1;
-}
-
-body:not(.dark-mode) .container::before {
-    content: "";
-    position: absolute;
-    top: 24px;
-    left: clamp(1.4rem, 5vw, 3.75rem);
-    right: clamp(1.4rem, 5vw, 3.75rem);
-    height: 12px;
-    pointer-events: none;
-    background:
-        linear-gradient(90deg, transparent, rgba(199, 154, 44, 0.9) 10%, rgba(139, 15, 15, 0.78) 18%, rgba(30, 79, 143, 0.78) 26%, rgba(199, 154, 44, 0.9) 50%, rgba(73, 106, 61, 0.78) 74%, rgba(139, 15, 15, 0.78) 82%, rgba(199, 154, 44, 0.9) 90%, transparent),
-        repeating-linear-gradient(90deg, transparent 0 14px, rgba(255, 248, 232, 0.55) 14px 16px);
-    border-top: 1px solid rgba(84, 56, 24, 0.24);
-    border-bottom: 1px solid rgba(84, 56, 24, 0.24);
-}
-
-body:not(.dark-mode) .container::after {
-    content: "";
-    position: absolute;
-    top: 68px;
-    bottom: 68px;
-    left: 28px;
-    width: 13px;
-    pointer-events: none;
-    background:
-        repeating-linear-gradient(180deg, rgba(199, 154, 44, 0.85) 0 8px, transparent 8px 18px),
-        linear-gradient(90deg, rgba(139, 15, 15, 0.56), rgba(30, 79, 143, 0.48));
-    opacity: 0.58;
 }
 
 .illuminated-initial,
@@ -500,9 +474,9 @@ body:not(.dark-mode) .header-content::after {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 2px;
+    height: 1px;
     background:
-        linear-gradient(90deg, var(--accent-color), var(--gold-color), var(--accent-blue), var(--accent-green), transparent);
+        linear-gradient(90deg, rgba(139, 15, 15, 0.48), rgba(199, 154, 44, 0.62), rgba(84, 56, 24, 0.14), transparent);
 }
 
 .header-text {
@@ -847,9 +821,7 @@ body.dark-mode #donut-cursor {
     }
 
     body:not(.dark-mode)::before,
-    body:not(.dark-mode) .manuscript-vines,
-    body:not(.dark-mode) .container::before,
-    body:not(.dark-mode) .container::after {
+    body:not(.dark-mode) .manuscript-vines {
         display: none;
     }
 
