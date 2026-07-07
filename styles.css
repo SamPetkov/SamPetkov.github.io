@@ -122,6 +122,25 @@ body:not(.dark-mode)::after {
     display: none;
 }
 
+.manuscript-vines {
+    display: none;
+}
+
+/* Public domain source: https://openclipart.org/detail/261497/leafy-vine-frame-4 */
+body:not(.dark-mode) .manuscript-vines {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("assets/leafy-vine-frame-4.svg");
+    background-repeat: no-repeat;
+    background-position: center -80px;
+    background-size: min(1420px, 124vw) auto;
+    mix-blend-mode: multiply;
+    opacity: 0.26;
+}
+
 body:not(.dark-mode) .container {
     border: 1px solid rgba(84, 56, 24, 0.28);
     background:
@@ -828,6 +847,7 @@ body.dark-mode #donut-cursor {
     }
 
     body:not(.dark-mode)::before,
+    body:not(.dark-mode) .manuscript-vines,
     body:not(.dark-mode) .container::before,
     body:not(.dark-mode) .container::after {
         display: none;
