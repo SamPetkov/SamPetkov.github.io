@@ -126,6 +126,10 @@ body:not(.dark-mode)::after {
     display: none;
 }
 
+.manuscript-frogs {
+    display: none;
+}
+
 /* Public domain source: https://openclipart.org/detail/261497/leafy-vine-frame-4 */
 body:not(.dark-mode) .manuscript-vines {
     display: block;
@@ -139,6 +143,63 @@ body:not(.dark-mode) .manuscript-vines {
     background-size: min(1420px, 124vw) auto;
     mix-blend-mode: multiply;
     opacity: 0.26;
+}
+
+body:not(.dark-mode) .manuscript-frogs {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+body:not(.dark-mode) .frog {
+    position: fixed;
+    display: block;
+    width: clamp(76px, 8vw, 124px);
+    aspect-ratio: 5 / 4;
+    /* Adapted crop from Mira calligraphiae monumenta, fol. 075. See assets/ATTRIBUTION.md. */
+    background-image: url("assets/manuscript-frog.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    filter: drop-shadow(0 8px 8px rgba(42, 23, 5, 0.2));
+    transform-origin: 50% 100%;
+    animation: manuscriptFrogHop 6.4s cubic-bezier(0.34, 0, 0.26, 1) infinite;
+}
+
+body:not(.dark-mode) .frog-left {
+    left: max(34px, calc((100vw - 980px) / 2 - 84px));
+    top: 31vh;
+    transform: rotate(-8deg);
+}
+
+body:not(.dark-mode) .frog-right {
+    right: max(38px, calc((100vw - 980px) / 2 - 86px));
+    top: 54vh;
+    transform: scaleX(-1) rotate(-7deg);
+    animation-delay: -2.2s;
+}
+
+body:not(.dark-mode) .frog-lower {
+    left: max(52px, calc((100vw - 980px) / 2 - 18px));
+    bottom: 7vh;
+    width: clamp(58px, 6vw, 92px);
+    opacity: 0.9;
+    transform: rotate(8deg);
+    animation-delay: -4.1s;
+}
+
+@keyframes manuscriptFrogHop {
+    0%, 16%, 100% {
+        translate: 0 0;
+    }
+    8% {
+        translate: 10px -22px;
+    }
+    12% {
+        translate: 18px -4px;
+    }
 }
 
 body:not(.dark-mode) .container {
@@ -821,7 +882,8 @@ body.dark-mode #donut-cursor {
     }
 
     body:not(.dark-mode)::before,
-    body:not(.dark-mode) .manuscript-vines {
+    body:not(.dark-mode) .manuscript-vines,
+    body:not(.dark-mode) .manuscript-frogs {
         display: none;
     }
 
@@ -877,5 +939,11 @@ body.dark-mode #donut-cursor {
 
     body:not(.dark-mode) h1 {
         font-size: 2.55rem;
+    }
+}
+
+@media (max-width: 900px), (prefers-reduced-motion: reduce) {
+    body:not(.dark-mode) .manuscript-frogs {
+        display: none;
     }
 }
